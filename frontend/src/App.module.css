@@ -1,0 +1,140 @@
+/* App.module.css */
+
+.container {
+  min-height: 100vh;
+  padding: 3rem 1.5rem;
+  background: #fff0f5;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.header {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  right: 2rem;
+  max-width: calc(100% - 4rem);
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #d63384;
+  font-family: 'Dancing Script', cursive;
+}
+
+.subtitle {
+  text-align: center;
+  margin-top: 6rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #4a4a4a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tableButton {
+  background-color: #f8d7da;
+  color: #5a2a2a;
+  border: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.tableButton:hover {
+  background-color: #f1b0b7;
+  transform: scale(1.05);
+}
+
+.resultContainer {
+  padding: 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  line-height: 1.7;
+}
+
+.resultTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #9d174d;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.resultText {
+  font-size: 1rem;
+  color: #333;
+}
+
+.thankYou {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 1.25rem;
+  color: #6b7280;
+}
+
+.submitButton {
+  display: block;
+  margin: 2rem auto;
+  background-color: #34d399;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.submitButton:hover {
+  transform: scale(1.05);
+}
+
+.stepContainer {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.prompt {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #374151;
+  text-align: center;
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.optionButton {
+  background-color: #e0f2fe;
+  color: #0c4a6e;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.optionButton:hover {
+  background-color: #bae6fd;
+  transform: scale(1.05);
+}

@@ -1,0 +1,14 @@
+# .npmignore
+
+# Don't include your local dev files
+index.js
+README.md
+.git/
+.vscode/
+node_modules/
+*.test.js
+*.log
+
+# Optional
+*.zip
+submissions.json

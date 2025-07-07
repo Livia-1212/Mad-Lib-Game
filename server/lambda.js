@@ -9,7 +9,7 @@ const serverless = require("@vendia/serverless-express");
 const app = express();
 
 app.use(cors({
-  origin: '*', // You can restrict to your frontend Vercel domain in production
+  origin: '*', // Or restrict to your Vercel frontend URL
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 }));
@@ -18,12 +18,11 @@ app.use(bodyParser.json());
 
 const DATA_FILE = path.join(__dirname, "submissions.json");
 
-// POST /submit — store or update submission
+// POST /submit
 app.post("/submit", (req, res) => {
   const newEntry = req.body;
 
   try {
-    // Ensure the file exists, create if not
     if (!fs.existsSync(DATA_FILE)) {
       fs.writeFileSync(DATA_FILE, JSON.stringify(newEntry) + "\n");
     } else {
@@ -37,6 +36,7 @@ app.post("/submit", (req, res) => {
   }
 });
 
+// GET /results
 app.get("/results", (req, res) => {
   if (!fs.existsSync(DATA_FILE)) {
     return res.status(404).json({ error: "No data yet" });
@@ -55,5 +55,5 @@ app.get("/results", (req, res) => {
   res.json(merged);
 });
 
-// Export Lambda handler
+// Lambda export
 exports.handler = serverless({ app });

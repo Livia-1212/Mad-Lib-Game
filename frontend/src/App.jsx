@@ -51,13 +51,16 @@ function App() {
     setStep((prev) => prev + 1);
   };
 
+  const API_BASE = "";
+
+
   const handleSubmit = async () => {
-    await axios.post("https://b9acmherqf.execute-api.us-east-1.amazonaws.com/prod/submit", answers);
+    await axios.post("/submit", answers);
     setSubmitted(true);
 
     if (selectedTable === "Sweetheart Table") {
       try {
-        const res = await axios.get("https://b9acmherqf.execute-api.us-east-1.amazonaws.com/prod/results");
+        const res = await axios.get("/results");
         setMergedAnswers(res.data);
         setShowLetter(true);
       } catch (err) {

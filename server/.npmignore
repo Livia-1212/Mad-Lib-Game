@@ -12,3 +12,5 @@ node_modules/
 # Optional
 *.zip
 submissions.json
+
+package-lock.json

@@ -1,10 +1,10 @@
 // lambda.js
 const express = require("express");
-const cors = require("cors");
+const cors = require('cors');
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
-const serverless = require("@vendia/serverless-express");
+const serverless = require('serverless-http');
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
-const DATA_FILE = path.join(__dirname, "submissions.json");
+const DATA_FILE = "/tmp/submissions.json";
 
 // POST /submit
 app.post("/submit", (req, res) => {
@@ -55,5 +55,5 @@ app.get("/results", (req, res) => {
   res.json(merged);
 });
 
-// Lambda export
-exports.handler = serverless({ app });
+exports.handler = serverless(app);
+exports.app = app;

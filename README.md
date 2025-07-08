@@ -1,25 +1,58 @@
 # 💌 Livia & Andrew's Wedding Mad Libs Game
 
-A fun, interactive wedding Mad Libs–style game app built with **React + Vite** for the frontend and **Node.js/Express** for the backend. Guests at different tables scan a QR code, choose from delightful prompts, and help generate a personalized love letter for the couple. The final letter is revealed at the sweetheart table.
+A Mad Libs–style game built for our wedding
+Guests at different tables scan a QR code, answer playful prompts, and contribute to a one-of-a-kind love letter — revealed at the sweetheart table.
+
+---
 
 ## ✨ Features
-- 🎯 Table-based question flow
-- 💡 16 customizable Mad Libs blanks
-- 📬 Personalized letter generated for my wedding
-- 🧼 Easy to play and access
 
-## 🔧 Technologies Used
+- 🎯 Table-specific question flow (supports 7 tables + sweetheart table)
+- 💡 16 creative, customizable blanks (adjectives, verbs, objects, etc.)
+- 💌 Auto-generates a personalized letter from guest responses
+- 📱 Mobile-friendly, no install required
+- 🧼 Simple to deploy and easy to adapt for other occasions
 
-| Stack     | Details                         |
-|-----------|----------------------------------|
-| Frontend  | React, Vite, CSS Modules         |
-| Backend   | Node.js, Express                 |
-| Deployment | Vercel (frontend), AWS Lambda (backend) |
-| Dev Tools | PM2, QRCode-Terminal, Git        |
+---
 
+## 🔧 Tech Stack
 
-## 📝 Developer Notes
-This app was designed for a joyful, engaging moment at our wedding — but the architecture is fully reusable and customizable for other events or creative storytelling purposes.
+| Layer       | Tech                              |
+|-------------|-----------------------------------|
+| **Frontend**  | React, Vite, CSS Modules           |
+| **Backend**   | Node.js, Express, serverless-http |
+| **Hosting**   | Vercel (frontend), AWS Lambda, S3 (backend) |
+| **Dev Tools** | Git, QRCode-Terminal, PM2 (local dev) |
 
-📂 License
-MIT License — free to use, modify, and share. Just don’t forget to toast us. 🥂
+---
+
+## 🚀 How It Works
+
+1. Guest scans a QR code and selects their table.
+2. They are guided through two fun prompts.
+3. Their input is submitted to the backend via API.
+4. The sweetheart table triggers the final **merged love letter** using all collected answers.
+
+---
+
+## 🛠 Developer Notes
+
+This app was crafted to bring smiles and connection to our special day.  
+But the architecture is reusable for:
+
+- Birthday party Mad Libs
+- Baby showers
+- Inside-joke generator games
+- Storytelling workshops
+- Classroom or event icebreakers
+
+---
+
+## 📂 License
+
+MIT License — feel free to use, adapt, and remix.  
+🥂
+
+---
+
+Made with 💖 for our family and friends.

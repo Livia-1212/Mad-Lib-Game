@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/submit",
+      "destination": "https://b9acmherqf.execute-api.us-east-1.amazonaws.com/default/submit"
+    },
+    {
+      "source": "/results",
+      "destination": "https://b9acmherqf.execute-api.us-east-1.amazonaws.com/default/results"
+    }
+  ]
+}

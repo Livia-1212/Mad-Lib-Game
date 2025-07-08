@@ -53,7 +53,7 @@ function App() {
 
 
   const handleSubmit = async () => {
-    axios.post('https://b9acmherqf.execute-api.us-east-1.amazonaws.com/prod/submit', formData)
+    axios.post('https://b9acmherqf.execute-api.us-east-1.amazonaws.com/prod/submit', answers)
 
 
     setSubmitted(true);

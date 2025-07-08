@@ -9,8 +9,8 @@ const serverless = require('serverless-http');
 const app = express();
 
 app.use(cors({
-  origin: '*', // Or restrict to your Vercel frontend URL
-  methods: ['GET', 'POST'],
+  origin: 'https://mad-lib-game-pvf7mdm6e-livia-1212s-projects.vercel.app',
+  methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
 }));
 

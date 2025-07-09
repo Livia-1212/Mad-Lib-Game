@@ -1,18 +1,36 @@
 // lambda.js
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
-const serverless = require('serverless-http');
+const serverless = require("serverless-http");
 
 const app = express();
 
-app.use(cors({
-  origin: 'https://mad-lib-game-pvf7mdm6e-livia-1212s-projects.vercel.app',
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
-}));
+// ✅ Add your dev IP (adjust if it changes)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://192.168.1.13:5173", // ← your dev machine
+  "https://mad-lib-game-pvf7mdm6e-livia-1212s-projects.vercel.app"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        console.error("Blocked by CORS:", origin);
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"]
+  })
+);
 
 app.use(bodyParser.json());
 
@@ -36,6 +54,7 @@ app.post("/submit", (req, res) => {
   }
 });
 
+
 // GET /results
 app.get("/results", (req, res) => {
   if (!fs.existsSync(DATA_FILE)) {
@@ -43,7 +62,7 @@ app.get("/results", (req, res) => {
   }
 
   const content = fs.readFileSync(DATA_FILE, "utf-8").trim();
-  const allLines = content.split("\n").map(line => {
+  const allLines = content.split("\n").map((line) => {
     try {
       return JSON.parse(line);
     } catch {
@@ -59,7 +78,7 @@ exports.handler = serverless(app, {
   request: (request, event) => {
     const stage = event?.requestContext?.stage;
     if (stage && request.path?.startsWith(`/${stage}`)) {
-      request.path = request.path.replace(`/${stage}`, '') || '/';
+      request.path = request.path.replace(`/${stage}`, "") || "/";
     }
   }
 });

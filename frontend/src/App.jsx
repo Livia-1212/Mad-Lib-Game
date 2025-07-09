@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import styles from "./App.module.css";
 
+const API_BASE = import.meta.env.VITE_API_BASE;
+const SWEETHEART_PASSWORD = import.meta.env.VITE_SWEETHEART_PASSWORD;
+
+
+
+
 
 const TABLE_BLANKS = {
   "Table 1": [
@@ -39,6 +45,7 @@ const TABLE_BLANKS = {
 };
 
 function App() {
+  const [authPassed, setAuthPassed] = useState(false); // ← move here
   const [selectedTable, setSelectedTable] = useState(null);
   const [answers, setAnswers] = useState({});
   const [step, setStep] = useState(0);
@@ -53,21 +60,21 @@ function App() {
 
 
   const handleSubmit = async () => {
-    axios.post('https://b9acmherqf.execute-api.us-east-1.amazonaws.com/prod/submit', answers)
-
-
+  try {
+    await axios.post(`${API_BASE}/submit`, answers);
     setSubmitted(true);
 
     if (selectedTable === "Sweetheart Table") {
-      try {
-        const res = await axios.get('https://b9acmherqf.execute-api.us-east-1.amazonaws.com/prod/results')
-        setMergedAnswers(res.data);
-        setShowLetter(true);
-      } catch (err) {
-        console.error("Error loading results:", err);
-      }
+      const res = await axios.get(`${API_BASE}/results`);
+      setMergedAnswers(res.data);
+      setShowLetter(true);
     }
-  };
+  } catch (err) {
+    console.error("Error submitting or fetching results:", err);
+  }
+};
+
+
 
   if (!selectedTable) {
     return (
@@ -82,12 +89,25 @@ function App() {
           {Object.keys(TABLE_BLANKS).map((table) => (
             <button
               key={table}
-              onClick={() => setSelectedTable(table)}
+              onClick={() => {
+                if (table === "Sweetheart Table") {
+                  const pw = prompt("Enter the sweetheart table password:");
+                  if (pw === SWEETHEART_PASSWORD) {
+                    setAuthPassed(true);
+                    setSelectedTable(table);
+                  } else {
+                     alert("Incorrect password.");
+                  }
+                 } else {
+                   setSelectedTable(table);
+                 }
+              }}
               className={styles.tableButton}
             >
               {table}
             </button>
           ))}
+
         </div>
       </div>
     );

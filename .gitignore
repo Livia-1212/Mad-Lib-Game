@@ -15,3 +15,6 @@ node_modules
 /server/package-lock.json
 /server/lambda.zip
 
+# In frontend/.gitignore
+.env
+.env.*

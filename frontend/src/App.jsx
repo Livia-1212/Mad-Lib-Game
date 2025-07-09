@@ -7,10 +7,6 @@ console.log("🚀 VITE_API_BASE =", API_BASE);
 
 const SWEETHEART_PASSWORD = import.meta.env.VITE_SWEETHEART_PASSWORD;
 
-
-
-
-
 const TABLE_BLANKS = {
   "Table 1": [
     { id: 1, prompt: "Pick an adjective from the following options:", options: ["spicy", "bewildering", "awkward", "cozy", "whimsical", "glittery"] },
@@ -47,7 +43,7 @@ const TABLE_BLANKS = {
 };
 
 function App() {
-  const [authPassed, setAuthPassed] = useState(false); // ← move here
+  const [authPassed, setAuthPassed] = useState(false);
   const [selectedTable, setSelectedTable] = useState(null);
   const [answers, setAnswers] = useState({});
   const [step, setStep] = useState(0);
@@ -60,23 +56,20 @@ function App() {
     setStep((prev) => prev + 1);
   };
 
-
   const handleSubmit = async () => {
-  try {
-    await axios.post(`${API_BASE}/submit`, answers);
-    setSubmitted(true);
+    try {
+      await axios.post(`${API_BASE}/submit`, answers);
+      setSubmitted(true);
 
-    if (selectedTable === "Sweetheart Table") {
-      const res = await axios.get(`${API_BASE}/results`);
-      setMergedAnswers(res.data);
-      setShowLetter(true);
+      if (selectedTable === "Sweetheart Table") {
+        const res = await axios.get(`${API_BASE}/results`);
+        setMergedAnswers(res.data);
+        setShowLetter(true);
+      }
+    } catch (err) {
+      console.error("Error submitting or fetching results:", err);
     }
-  } catch (err) {
-    console.error("Error submitting or fetching results:", err);
-  }
-};
-
-
+  };
 
   if (!selectedTable) {
     return (
@@ -98,18 +91,17 @@ function App() {
                     setAuthPassed(true);
                     setSelectedTable(table);
                   } else {
-                     alert("Incorrect password.");
+                    alert("Incorrect password.");
                   }
-                 } else {
-                   setSelectedTable(table);
-                 }
+                } else {
+                  setSelectedTable(table);
+                }
               }}
               className={styles.tableButton}
             >
               {table}
             </button>
           ))}
-
         </div>
       </div>
     );

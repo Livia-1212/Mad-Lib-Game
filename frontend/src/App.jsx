@@ -3,6 +3,8 @@ import axios from "axios";
 import styles from "./App.module.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
+console.log("🚀 VITE_API_BASE =", API_BASE);
+
 const SWEETHEART_PASSWORD = import.meta.env.VITE_SWEETHEART_PASSWORD;
 
 

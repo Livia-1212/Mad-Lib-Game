@@ -8,12 +8,13 @@ const serverless = require("serverless-http");
 
 const app = express();
 
-// ✅ Add your dev IP (adjust if it changes)
 const allowedOrigins = [
   "http://localhost:5173",
-  "http://192.168.1.13:5173", // ← your dev machine
-  "https://mad-lib-game-pvf7mdm6e-livia-1212s-projects.vercel.app"
+  "http://192.168.1.13:5173",
+  "https://mad-lib-game.vercel.app", // real deployed frontend
+  "https://mad-lib-game-464eojc5i-livia-1212s-projects.vercel.app" // Auto-generated preview domain
 ];
+
 
 app.use(
   cors({
@@ -33,6 +34,17 @@ app.use(
 );
 
 app.use(bodyParser.json());
+
+app.options("*", cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error("Not allowed by CORS"));
+  },
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"]
+}));
+
 
 const DATA_FILE = "/tmp/submissions.json";
 

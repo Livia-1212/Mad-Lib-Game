@@ -11,3 +11,7 @@ frontend/dist
 .DS_Store
 
 node_modules
+
+/server/package-lock.json
+/server/lambda.zip
+

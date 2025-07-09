@@ -55,5 +55,13 @@ app.get("/results", (req, res) => {
   res.json(merged);
 });
 
-exports.handler = serverless(app);
+exports.handler = serverless(app, {
+  request: (request, event) => {
+    const stage = event?.requestContext?.stage;
+    if (stage && request.path?.startsWith(`/${stage}`)) {
+      request.path = request.path.replace(`/${stage}`, '') || '/';
+    }
+  }
+});
+
 exports.app = app;

@@ -17,6 +17,5 @@ node_modules
 
 # In frontend/.gitignore
 .env
-.env.*
 
 lambda.zip

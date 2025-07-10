@@ -60,42 +60,53 @@ app.use(cors({
 app.use(bodyParser.json());
 
 // App logic
-const DATA_FILE = "/tmp/submissions.json";
+
+let memorySubmissions = [];
 
 app.post("/submit", (req, res) => {
-  const newEntry = req.body;
-
-  try {
-    if (!fs.existsSync(DATA_FILE)) {
-      fs.writeFileSync(DATA_FILE, JSON.stringify(newEntry) + "\n");
-    } else {
-      fs.appendFileSync(DATA_FILE, JSON.stringify(newEntry) + "\n");
-    }
-
-    res.status(200).send("Submitted");
-  } catch (error) {
-    console.error("Failed to save submission:", error);
-    res.status(500).send("Error saving submission");
-  }
+  memorySubmissions.push(req.body);
+  res.status(200).send("Stored in memory successfully");
 });
 
 app.get("/results", (req, res) => {
-  if (!fs.existsSync(DATA_FILE)) {
-    return res.status(404).json({ error: "No data yet" });
-  }
-
-  const content = fs.readFileSync(DATA_FILE, "utf-8").trim();
-  const allLines = content.split("\n").map((line) => {
-    try {
-      return JSON.parse(line);
-    } catch {
-      return {};
-    }
-  });
-
-  const merged = allLines.reduce((acc, entry) => ({ ...acc, ...entry }), {});
-  res.json(merged);
+  res.json(memorySubmissions);
 });
+// const DATA_FILE = "/tmp/submissions.json";
+
+// app.post("/submit", (req, res) => {
+//   const newEntry = req.body;
+
+//   try {
+//     if (!fs.existsSync(DATA_FILE)) {
+//       fs.writeFileSync(DATA_FILE, JSON.stringify(newEntry) + "\n");
+//     } else {
+//       fs.appendFileSync(DATA_FILE, JSON.stringify(newEntry) + "\n");
+//     }
+
+//     res.status(200).send("Submitted");
+//   } catch (error) {
+//     console.error("Failed to save submission:", error);
+//     res.status(500).send("Error saving submission");
+//   }
+// });
+
+// app.get("/results", (req, res) => {
+//   if (!fs.existsSync(DATA_FILE)) {
+//     return res.status(404).json({ error: "No data yet" });
+//   }
+
+//   const content = fs.readFileSync(DATA_FILE, "utf-8").trim();
+//   const allLines = content.split("\n").map((line) => {
+//     try {
+//       return JSON.parse(line);
+//     } catch {
+//       return {};
+//     }
+//   });
+
+//   const merged = allLines.reduce((acc, entry) => ({ ...acc, ...entry }), {});
+//   res.json(merged);
+// });
 
 // Optional: export app for local testing
 exports.app = app;

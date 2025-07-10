@@ -22,17 +22,13 @@ const corsHeaders = {
 };
 
 // help AWS handle OPTIONS directly
-const wrapped = serverless(app, {
-  request: (request, event) => {
-    const stage = event?.requestContext?.stage;
-    if (stage && request.path?.startsWith(`/${stage}`)) {
-      request.path = request.path.replace(`/${stage}`, "") || "/";
-    }
-  }
-});
+
+const wrapped = serverless(app);
 
 exports.handler = async (event, context) => {
   // Handle preflight CORS requests
+  console.log("📍 Incoming raw path in handler:", event.rawPath || event.path || "(unknown)");
+
   if (event.requestContext?.http?.method === "OPTIONS") {
     return {
       statusCode: 200,

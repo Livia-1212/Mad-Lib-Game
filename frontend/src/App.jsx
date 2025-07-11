@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./App.module.css";
+import MadLibDebugResults from "./MadLibDebugResults";
+
 
 const API_BASE = import.meta.env.VITE_API_BASE;
 console.log("🚀 VITE_API_BASE =", API_BASE);
@@ -125,6 +127,9 @@ function App() {
           Love,
           <strong> Your Family and Friends</strong>
         </p>
+
+        {/* 🧪 Debug viewer */}
+        <MadLibDebugResults />
       </div>
     );
   }

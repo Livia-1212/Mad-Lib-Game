@@ -119,22 +119,25 @@ app.get("/results", async (req, res) => {
         console.log(`⏭️ Skipping non-JSON file: ${obj.Key}`);
         continue;
       }
-    
+
       console.log("📄 Reading:", obj.Key);
-    
+
       const getCmd = new GetObjectCommand({
         Bucket: BUCKET_NAME,
         Key: obj.Key
       });
-    
+
       try {
+        const result = await s3.send(getCmd);
+        const bodyContents = await streamToString(result.Body);
+
         const json = JSON.parse(bodyContents);
         allData.push(json);
       } catch (parseErr) {
-        console.error(`❌ Failed to parse ${obj.Key}:`, parseErr.message);
+        console.error(`❌ Failed to read/parse ${obj.Key}:`, parseErr.message);
       }
     }
-    
+
     const merged = allData.reduce((acc, entry) => ({ ...acc, ...entry }), {});
     console.log("✅ Merged Result:", merged);
     res.json(merged);

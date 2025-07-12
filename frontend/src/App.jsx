@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./App.module.css";
-import MadLibDebugResults from "./MadLibDebugResults";
+
 
 
 const API_BASE = import.meta.env.VITE_API_BASE;

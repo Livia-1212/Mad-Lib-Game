@@ -82,13 +82,14 @@ app.post("/submit", async (req, res) => {
   const newEntry = req.body;
 
   try {
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    const fileKey = `submission-${timestamp}.json`;
+    // const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const fileKey = `submission.json`;
 
     const uploadParams = new PutObjectCommand({
       Bucket: BUCKET_NAME,
       Key: fileKey,
-      Body: JSON.stringify(newEntry, null, 2),
+      Body: Buffer.isBuffer(newEntry) ? newEntry.toString("utf8")
+      : JSON.stringify(newEntry, null, 2),
       ContentType: "application/json"
     });
 

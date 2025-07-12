@@ -111,7 +111,7 @@ app.post("/submit", async (req, res) => {
     const putCmd = new PutObjectCommand({
       Bucket: BUCKET_NAME,
       Key: fileKey,
-      Body: JSON.stringify(mergedData, null, 2),
+      Body: Buffer.isBuffer(mergedData) ? mergedData.toString("utf8") : JSON.stringify(mergedData, null, 2),
       ContentType: "application/json"
     });
 

@@ -79,8 +79,16 @@ app.use(bodyParser.json());
 
 /** 🔽 POST /submit — Upload to S3 */
 app.post("/submit", async (req, res) => {
-  const newEntry = req.body;
-  console.log("📥 newEntry is buffer?", Buffer.isBuffer(newEntry));
+  let newEntry;
+
+  // 🧠 Handle the case where req.body is a Buffer
+  try {
+    const raw = Buffer.isBuffer(req.body) ? req.body.toString("utf8") : req.body;
+    newEntry = typeof raw === "string" ? JSON.parse(raw) : raw;
+  } catch (err) {
+    console.error("❌ Failed to parse newEntry:", err.message);
+    return res.status(400).json({ error: "Invalid JSON submission." });
+  }
 
   try {
     const fileKey = "submission.json";

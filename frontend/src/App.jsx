@@ -127,9 +127,6 @@ function App() {
           Love,
           <strong> Your Family and Friends</strong>
         </p>
-
-        {/* 🧪 Debug viewer */}
-        <MadLibDebugResults />
       </div>
     );
   }

@@ -80,6 +80,7 @@ app.use(bodyParser.json());
 /** 🔽 POST /submit — Upload to S3 */
 app.post("/submit", async (req, res) => {
   const newEntry = req.body;
+  console.log("📥 newEntry is buffer?", Buffer.isBuffer(newEntry));
 
   try {
     const fileKey = "submission.json";
@@ -106,12 +107,13 @@ app.post("/submit", async (req, res) => {
 
     // Step 2: Merge newEntry into existingData (new keys overwrite old)
     const mergedData = { ...existingData, ...newEntry };
+    const body = JSON.stringify(JSON.parse(JSON.stringify(mergedData)), null, 2);
 
     // Step 3: Save merged data back to S3
     const putCmd = new PutObjectCommand({
       Bucket: BUCKET_NAME,
       Key: fileKey,
-      Body: Buffer.isBuffer(mergedData) ? mergedData.toString("utf8") : JSON.stringify(mergedData, null, 2),
+      Body: body,
       ContentType: "application/json"
     });
 

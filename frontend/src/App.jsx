@@ -60,7 +60,11 @@ function App() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post(`${API_BASE}/submit`, answers);
+      await axios.post(`${API_BASE}/submit`, answers, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
       setSubmitted(true);
 
       if (selectedTable === "Sweetheart Table") {

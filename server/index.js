@@ -82,21 +82,42 @@ app.post("/submit", async (req, res) => {
   const newEntry = req.body;
 
   try {
-    // const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    const fileKey = `submission.json`;
+    const fileKey = "submission.json";
+    let existingData = {};
 
-    const uploadParams = new PutObjectCommand({
+    // Step 1: Try to read the existing file from S3
+    try {
+      const getCmd = new GetObjectCommand({
+        Bucket: BUCKET_NAME,
+        Key: fileKey
+      });
+
+      const data = await s3.send(getCmd);
+      const body = await streamToString(data.Body);
+      existingData = JSON.parse(body); // existing data is a flat object
+    } catch (err) {
+      if (err.name === "NoSuchKey") {
+        console.log("🆕 No existing submission.json found. Creating new.");
+      } else {
+        console.error("❌ Failed to read existing submission:", err);
+        return res.status(500).json({ error: "Failed to read existing submission." });
+      }
+    }
+
+    // Step 2: Merge newEntry into existingData (new keys overwrite old)
+    const mergedData = { ...existingData, ...newEntry };
+
+    // Step 3: Save merged data back to S3
+    const putCmd = new PutObjectCommand({
       Bucket: BUCKET_NAME,
       Key: fileKey,
-      Body: Buffer.isBuffer(newEntry) ? newEntry.toString("utf8")
-      : JSON.stringify(newEntry, null, 2),
+      Body: JSON.stringify(mergedData, null, 2),
       ContentType: "application/json"
     });
 
-    await s3.send(uploadParams);
-
-    console.log(`✅ Uploaded to S3: ${fileKey}`);
-    res.status(200).json({ message: "Submitted and stored to S3!" });
+    await s3.send(putCmd);
+    console.log("✅ Updated submission.json with merged data.");
+    res.status(200).json({ message: "Submission merged and stored in S3." });
   } catch (error) {
     console.error("❌ S3 Upload Error:", error);
     res.status(500).send("Failed to upload to S3.");

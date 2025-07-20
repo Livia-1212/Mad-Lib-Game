@@ -23,7 +23,7 @@ const TABLE_BLANKS = {
     { id: 6, prompt: "Pick a place:", options: ["IKEA", "Paris", "the dog park", "Costco", "a Zoom meeting", "Narnia"] }
   ],
   "Table 4": [
-    { id: 7, prompt: "Pick a verb - past tense:", options: ["debated", "whispered", "stumbled", "escaped", "moonwalked", "faceplanted"] },
+    { id: 7, prompt: "Pick a verb - present tense:", options: ["debate", "whisper", "stumble", "jump", "moonwalk", "faceplant"] },
     { id: 8, prompt: "Pick a phrase of your favorite:", options: ["May the Force be with you.", "Penny! Penny! Penny!", "To infinity and beyond!", "I'll be back.", "A Lannister always pays his debts.", "I'm not superstitious, but I am a little stitious"] }
   ],
   "Table 5": [
@@ -41,7 +41,7 @@ const TABLE_BLANKS = {
   "Table 7": [
     { id: 15, prompt: "Pick a noun:", options: ["Wi-Fi", "precedent", "legal consent", "hearsay", "burden of proof", "emotional damage"] },
     { id: 16, prompt: "Pick one of the following activities:", options: ["karaoke with closing arguments", "mock trial over who left the dishes", "closing arguments over closet space", 
-      "Cross-examining every dessert option at the new bakery.", "Drafting a memorandum of understanding: You cook, I clean.", "Filing a motion to stay in pajamas until further notice."] }
+      "cross-examining every dessert option at the new bakery.", "drafting a memorandum of understanding: You cook, I clean.", "filing of a motion to stay in pajamas until further notice"] }
   ]
 };
 

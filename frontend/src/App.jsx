@@ -11,20 +11,20 @@ const SWEETHEART_PASSWORD = import.meta.env.VITE_SWEETHEART_PASSWORD;
 
 const TABLE_BLANKS = {
   "Table 1": [
-    { id: 1, prompt: "Pick an adjective from the following options:", options: ["spicy", "bewildering", "awkward", "cozy", "whimsical", "glittery"] },
-    { id: 2, prompt: "Pick a verb ending in -ing:", options: ["laughing", "overthinking", "dancing", "binge-watching", "compromising", "cuddling"] }
+    { id: 1, prompt: "Pick an adjective:", options: ["spicy", "bewildering", "awkward", "cozy", "whimsical", "glittery"] },
+    { id: 2, prompt: "Pick a verb:", options: ["laughing", "overthinking", "dancing", "binge-watching", "compromising", "cuddling"] }
   ],
   "Table 2": [
-    { id: 3, prompt: "Pick a plural noun:", options: ["surprises", "dishes", "plot twists", "mismatched socks", "adventures", "spreadsheets"] },
-    { id: 4, prompt: "Pick a plural animal:", options: ["raccoons", "penguins", "alpacas", "hyenas", "cats", "kangaroos"] }
+    { id: 3, prompt: "Pick one of the following:", options: ["surprises", "dishes", "plot twists", "mismatched socks", "adventures", "spreadsheets"] },
+    { id: 4, prompt: "Pick an animal:", options: ["raccoons", "penguins", "alpacas", "hyenas", "cats", "kangaroos"] }
   ],
   "Table 3": [
     { id: 5, prompt: "Pick an adjective:", options: ["patient", "dramatic", "caffeinated", "loyal", "productive", "sleepy"] },
     { id: 6, prompt: "Pick a place:", options: ["IKEA", "Paris", "the dog park", "Costco", "a Zoom meeting", "Narnia"] }
   ],
   "Table 4": [
-    { id: 7, prompt: "Pick a verb - present tense:", options: ["debate", "whisper", "stumble", "jump", "moonwalk", "faceplant"] },
-    { id: 8, prompt: "Pick a phrase of your favorite:", options: ["May the Force be with you.", "Penny! Penny! Penny!", "To infinity and beyond!", "I'll be back.", "A Lannister always pays his debts.", "I'm not superstitious, but I am a little stitious"] }
+    { id: 7, prompt: "Pick a verb:", options: ["debate", "whisper", "stumble", "jump", "moonwalk", "faceplant"] },
+    { id: 8, prompt: "Pick your favorite movie quote:", options: ["May the Force be with you.", "Penny! Penny! Penny!", "To infinity and beyond!", "I'll be back.", "A Lannister always pays his debts.", "I'm not superstitious, but I am a little stitious"] }
   ],
   "Table 5": [
     { id: 9, prompt: "Pick a food:", options: ["dumplings", "tater tots", "noodles", "cupcakes", "samosas", "cheese cubes"] },
@@ -35,8 +35,8 @@ const TABLE_BLANKS = {
     { id: 12, prompt: "Pick an object:", options: ["pillow fight", "first-class plane ticket", "chewed-up sock Harper(Andrew & Livia's dog) refused to surrender", "to-do list", "inside joke", "your mom’s phone call"] }
   ],
   "Table 6": [
-    { id: 13, prompt: "Pick a verb ending in -ing:", options: ["slow dancing", "breathing", "procrastinating", "doing push-ups", "staring into space", "people-watching"] },
-    { id: 14, prompt: "Pick one of the number options:", options: ["3", "exactly 22.5", "20 thousand", "0", "square root of 31", "888"] }
+    { id: 13, prompt: "Pick a verb", options: ["slow dancing", "breathing", "procrastinating", "doing push-ups", "staring into space", "people-watching"] },
+    { id: 14, prompt: "Pick one of the following:", options: ["3", "exactly 22.5", "20 thousand", "0", "square root of 31", "888"] }
   ],
   "Table 7": [
     { id: 15, prompt: "Pick a noun:", options: ["Wi-Fi", "precedent", "legal consent", "hearsay", "burden of proof", "emotional damage"] },
@@ -124,7 +124,7 @@ function App() {
         <p className={styles.resultText}>
           Dear Livia and Andrew,<br /><br />
           Marriage is a(n) <strong>{data[1]}</strong> adventure, full of <strong>{data[2]}</strong> and unexpected <strong>{data[3]}</strong>.<br />
-          Remember, even if you fight like <strong>{data[4]}</strong>, always stay <strong>{data[5]}</strong> and never go to bed angry—unless you’re in <strong>{data[6]}</strong>, in which case, just <strong>{data[7]}</strong> and yell <strong>{data[8]}</strong> into a pillow.<br /><br />
+          Remember, even if you fight like <strong>{data[4]}</strong>, always stay <strong>{data[5]}</strong> and never go to bed angry—unless you’re in <strong>{data[6]}</strong>, in which case, just <strong>{data[7]}</strong> and yell "<strong>{data[8]}</strong>" into a pillow.<br /><br />
           Share plenty of <strong>{data[9]}</strong>, always <strong>{data[10]}</strong> before making big decisions, and keep your hearts full of <strong>{data[11]}</strong>.<br />
           Never forget the power of a good <strong>{data[12]}</strong>, and when in doubt, try <strong>{data[13]}</strong> for at least <strong>{data[14]}</strong> minutes.<br /><br />
           Also, never underestimate the importance of <strong>{data[15]}</strong>, or the occasional <strong>{data[16]}</strong> to keep things interesting.<br /><br />

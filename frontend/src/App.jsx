@@ -69,7 +69,7 @@ function App() {
       setSubmitted(true);
 
       if (selectedTable === "Sweetheart Table") {
-        const res = await axios.get(${API_BASE}/results);
+        const res = await axios.get(`${API_BASE}/results`);
         setMergedAnswers(res.data);
         setShowLetter(true);
       }

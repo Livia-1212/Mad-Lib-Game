@@ -12,7 +12,7 @@ const SWEETHEART_PASSWORD = import.meta.env.VITE_SWEETHEART_PASSWORD;
 const TABLE_BLANKS = {
   "Table 1": [
     { id: 1, prompt: "Pick an adjective:", options: ["spicy", "bewildering", "awkward", "cozy", "whimsical", "glittery"] },
-    { id: 2, prompt: "Pick a verb:", options: ["laughing", "overthinking", "dancing", "binge-watching", "compromising", "cuddling"] }
+    { id: 2, prompt: "Pick a verb:", options: ["laughing", "overthinking", "dancing", "binge-watching", "loving", "cuddling"] }
   ],
   "Table 2": [
     { id: 3, prompt: "Pick one of the following:", options: ["surprises", "dishes", "plot twists", "mismatched socks", "adventures", "spreadsheets"] },
@@ -39,7 +39,7 @@ const TABLE_BLANKS = {
     { id: 14, prompt: "Pick one of the following:", options: ["3", "exactly 22.5", "20 thousand", "0", "square root of 31", "888"] }
   ],
   "Table 7": [
-    { id: 15, prompt: "Pick a noun:", options: ["Wi-Fi", "precedent", "legal consent", "hearsay", "burden of proof", "emotional damage"] },
+    { id: 15, prompt: "Pick a noun:", options: ["Wi-Fi", "a good back massage", "abiding by the Constitution", "freshly laundered clothing", "powerful snowblower", "fried chicken"] },
     { id: 16, prompt: "Pick one of the following activities:", options: ["karaoke with closing arguments", "mock trial over who left the dishes", "closing arguments over closet space", 
       "cross-examining every dessert option at the new bakery.", "drafting a memorandum of understanding: You cook, I clean.", "filing of a motion to stay in pajamas until further notice"] }
   ]

@@ -37,6 +37,7 @@
 }
 
 .tableButton {
+  height: 6rem;
   background-color: #f8d7da;
   color: #5a2a2a;
   border: none;
@@ -86,11 +87,11 @@
 
 .submitButton {
   display: block;
-  margin: 2rem auto;
+  margin: 10rem auto 2rem auto;
   background-color: #34d399;
   color: white;
   border: none;
-  padding: 0.8rem 2rem;
+  padding: 1.2rem 2rem;
   border-radius: 10px;
   font-weight: 600;
   font-size: 1rem;
@@ -123,6 +124,7 @@
 }
 
 .optionButton {
+  height: 6rem;
   background-color: #e0f2fe;
   color: #0c4a6e;
   border: none;

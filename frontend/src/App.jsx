@@ -24,7 +24,7 @@ const TABLE_BLANKS = {
   ],
   "Table 4": [
     { id: 7, prompt: "Pick a verb - past tense:", options: ["debated", "whispered", "stumbled", "escaped", "moonwalked", "faceplanted"] },
-    { id: 8, prompt: "Pick a phrase of your favorite:", options: ["May the Force be with you.", "Penny! Penny! Penny!", "To infinity and beyond!", "You can’t handle the truth!", "Nobody puts Baby in a corner.", "I volunteer as tribute!"] }
+    { id: 8, prompt: "Pick a phrase of your favorite:", options: ["May the Force be with you.", "Penny! Penny! Penny!", "To infinity and beyond!", "I'll be back.", "A Lannister always pays his debts.", "I'm not superstitious, but I am a little stitious"] }
   ],
   "Table 5": [
     { id: 9, prompt: "Pick a food:", options: ["dumplings", "tater tots", "noodles", "cupcakes", "samosas", "cheese cubes"] },
@@ -32,15 +32,16 @@ const TABLE_BLANKS = {
   ],
   "Sweetheart Table": [
     { id: 11, prompt: "Pick an emotion:", options: ["gratitude", "overoptimism", "adoration", "joy", "curiosity", "peace"] },
-    { id: 12, prompt: "Pick an object:", options: ["pillow fight", "first-class plane ticket", "chewed-up sock Harper refused to surrender", "to-do list", "inside joke", "your mom’s call"] }
+    { id: 12, prompt: "Pick an object:", options: ["pillow fight", "first-class plane ticket", "chewed-up sock Harper(Andrew & Livia's dog) refused to surrender", "to-do list", "inside joke", "your mom’s phone call"] }
   ],
   "Table 6": [
     { id: 13, prompt: "Pick a verb ending in -ing:", options: ["slow dancing", "breathing", "procrastinating", "doing push-ups", "staring into space", "people-watching"] },
-    { id: 14, prompt: "Pick one of the number options:", options: ["3", "exactly 22.5", "20 thousands", "0", "a square root of 31", "888"] }
+    { id: 14, prompt: "Pick one of the number options:", options: ["3", "exactly 22.5", "20 thousand", "0", "square root of 31", "888"] }
   ],
   "Table 7": [
     { id: 15, prompt: "Pick a noun:", options: ["Wi-Fi", "precedent", "legal consent", "hearsay", "burden of proof", "emotional damage"] },
-    { id: 16, prompt: "Pick one of the following activities:", options: ["karaoke with closing arguments", "mock trial over who left the dishes", "closing arguments over closet space", "competitive grocery shopping", "impromptu contract negotiation over snacks", "vib coding and re-configurating weekend plans"] }
+    { id: 16, prompt: "Pick one of the following activities:", options: ["karaoke with closing arguments", "mock trial over who left the dishes", "closing arguments over closet space", 
+      "Cross-examining every dessert option at the new bakery.", "Drafting a memorandum of understanding: You cook, I clean.", "Filing a motion to stay in pajamas until further notice."] }
   ]
 };
 
@@ -68,7 +69,7 @@ function App() {
       setSubmitted(true);
 
       if (selectedTable === "Sweetheart Table") {
-        const res = await axios.get(`${API_BASE}/results`);
+        const res = await axios.get(${API_BASE}/results);
         setMergedAnswers(res.data);
         setShowLetter(true);
       }
@@ -159,3 +160,5 @@ function App() {
 }
 
 export default App;
+
+

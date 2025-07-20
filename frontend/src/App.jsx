@@ -39,7 +39,7 @@ const TABLE_BLANKS = {
     { id: 14, prompt: "Pick one of the following:", options: ["3", "exactly 22.5", "20 thousand", "0", "square root of 31", "888"] }
   ],
   "Table 7": [
-    { id: 15, prompt: "Pick one of the following:", options: ["Wi-Fi", "a good back massage", "abiding by the Constitution", "freshly laundered clothing", "powerful snowblower", "fried chicken"] },
+    { id: 15, prompt: "Pick one of the following:", options: ["Wi-Fi", "a good back massage", "3-ply toilet paper", "freshly laundered clothing", "powerful snowblower", "fried chicken"] },
     { id: 16, prompt: "Pick one of the following:", options: ["karaoke with closing arguments", "mock trial over who left the dishes", "closing arguments over closet space", 
       "cross-examining every dessert option at the new bakery.", "drafting a memorandum of understanding: You cook, I clean.", "filing of a motion to stay in pajamas until further notice"] }
   ]
